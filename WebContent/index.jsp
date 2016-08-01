@@ -15,15 +15,17 @@
 	<body>
 	<h3>Ajax File Upload with Progress Bar</h3>
 		<form id="UploadForm" action="UploadFile" method="post" enctype="multipart/form-data">
+			<input type="button" id="addfile" value="+">
+			<span id="rm_btn"><input type="button" id="btn_rm_input" value="-"></span><br/>
 			<input type="file" size="60" id="myfile" name="myfile"> 
 			<input type="submit" value="Ajax File Upload">
 			  <div id="progressbox">
 			    <div id="progressbar"></div>
 			    <div id="percent">0%</div>
 			  </div>
-			<br />
-			<div id="message"></div>
+			<span><div id="message"></div></span>
 			<div id="respsonse"><label>檔案大小</label><span id="filesize"></span></div>
+			<span id="append_input"></span>
 		</form>
 	</body>
 </html>

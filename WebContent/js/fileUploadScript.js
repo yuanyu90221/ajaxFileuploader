@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	let button_count = 1;
 	var options = {
 		beforeSend : function() {
 			$("#progressbox").show();
@@ -33,7 +34,53 @@ $(document).ready(function() {
 		$("#progressbar").width('0%');
 		$("#message").empty();
 		$("#percent").html("0%");
-		var fileSize = this.files[0].size /1000;
-		$("#filesize").html(fileSize +"KB");
+		if(this.files[0]){
+			var fileSize = this.files[0].size /1000;
+			$("#filesize").html(fileSize +"KB");
+		}
+		else{
+			$("#filesize").html("0KB");
+		}
+	});
+	$("#rm_btn").css("display","none");
+	$("#addfile").on('click',function(){
+		var result_btn_count = button_count;
+		var append_btn_html ='<div id="btn_'+button_count+'">'+
+							 '<input type="file" size="60" id="myfile'+button_count+'" name="myfilemyfile'+button_count+'">'+
+		                     '<input type="button" value="Ajax File Upload'+button_count+'" id="submit'+button_count+'">'+
+		                     '<div id="progressbox">'+
+		                     '<div id="progressbar'+button_count+'"></div>'+
+		     			     '<div id="percent'+button_count+'">0%</div>'+
+		     			     '</div>'+
+		     			     '<span><div id="message'+button_count+'"></div></span>'+
+		     			     '<div id="respsonse"><label>檔案大小</label><span id="filesize'+button_count+'"></span></div>'+
+		     			     '</div>';
+		$("#append_input").append(append_btn_html);
+		
+		button_count++;
+	    if(button_count > 1){
+	    	$("#rm_btn").css("display","inline");
+	    }
+	    else{
+	    	$("#rm_btn").css("display","none");
+	    }
+//		$("#btn_rm_"+(button_count-1)).bind('click',function(){
+//			var current_btn = button_count-1;
+//			console.log(current_btn);
+//			$("#btn_rm_"+current_btn).unbind('click');
+//			$("#btn_"+current_btn).remove();
+//			button_count--;
+//		});
+	});
+	$("#btn_rm_input").bind('click', function() {
+		var current_btn = button_count - 1;
+		console.log(current_btn);
+		$("#btn_" + current_btn).remove();
+		button_count--;
+		if (button_count > 1) {
+			$("#rm_btn").css("display", "inline");
+		} else {
+			$("#rm_btn").css("display", "none");
+		}
 	});
 });
