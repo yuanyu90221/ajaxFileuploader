@@ -18,7 +18,7 @@
 			<input type="button" id="addfile" value="+">
 			<span id="rm_btn"><input type="button" id="btn_rm_input" value="-"></span><br/>
 			<input type="file" size="60" id="myfile" name="myfile"> 
-			<input type="submit" value="Ajax File Upload">
+			<input type="submit" value="Ajax File Upload" id="sendUpload">
 			<div id="respsonse"><label>檔案大小</label><span id="filesize"></span></div>
 			<span id="append_input"></span>
 			  <div id="progressbox">

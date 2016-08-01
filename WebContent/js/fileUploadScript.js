@@ -28,6 +28,8 @@ $(document).ready(function() {
 			$("#message").html("<font color='red'> ERROR: unable to upload files</font>");
 		}
 	};
+	$("#myfile").val("");
+	$("#sendUpload").css("display","none");
 	$("#UploadForm").ajaxForm(options);
 	$("#myfile").on("change",function(){
 		console.log('file change');
@@ -37,9 +39,11 @@ $(document).ready(function() {
 		if(this.files[0]){
 			var fileSize = this.files[0].size /1000;
 			$("#filesize").html(fileSize +"KB");
+			$("#sendUpload").css("display","inline");
 		}
 		else{
 			$("#filesize").html("0KB");
+			$("#sendUpload").css("display","none");
 		}
 	});
 	$("#rm_btn").css("display","none");
